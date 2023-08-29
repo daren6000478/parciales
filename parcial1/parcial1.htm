@@ -6,18 +6,26 @@
 <title>Transformación de Vectores</title>
 <script>
 function applyTransformations() {
-    const p1 = parseFloat(document.getElementById('p1').value);
-    const p2 = parseFloat(document.getElementById('p2').value);
+function applyTransformations() {
+    const v1x = parseFloat(document.getElementById('v1x').value);
+    const v1y = parseFloat(document.getElementById('v1y').value);
+    const v1z = parseFloat(document.getElementById('v1z').value);
 
-    const transformation1 = parseFloat(document.getElementById('transformation1').value);//declarar variables
+    const v2x = parseFloat(document.getElementById('v2x').value);
+    const v2y = parseFloat(document.getElementById('v2y').value);
+    const v2z = parseFloat(document.getElementById('v2z').value);
+
+    const transformation1 = parseFloat(document.getElementById('transformation1').value);
     const transformation2 = parseFloat(document.getElementById('transformation2').value);
 
-    const transformedP1 = transformation1 * p1 + transformation2 * p2;//funciones de transformacion
-    const transformedP2 = transformation1 * p2 + transformation2 * p1;
+    const transformedV1x = transformation1 * v1x + transformation2 * v1y;
+    const transformedV1y = transformation1 * v1y + transformation2 * v1z;
+    const transformedV1z = transformation1 * v1z + transformation2 * v1x;
 
-    document.getElementById('result').textContent = `Resultado: (${transformedP1.toFixed(2)}, ${transformedP2.toFixed(2)})`;
-    document.getElementById('result').style.color = 'green';//fuente
-}
+    const transformedV2x = transformation1 * v2x + transformation2 * v2y;
+    const transformedV2y = transformation1 * v2y + transformation2 * v2z;
+    const transformedV2z = transformation1 * v2z + transformation2 * v2x;
+
 </script>
 </head>
 <body>
