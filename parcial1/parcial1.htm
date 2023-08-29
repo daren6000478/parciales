@@ -1,19 +1,37 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=2.0">
-<title>TRANSFORMACIONES CONJUNTAS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transformación de Vectores</title>
 <script>
 function applyTransformations() {
     const p1 = parseFloat(document.getElementById('p1').value);
     const p2 = parseFloat(document.getElementById('p2').value);
 
-    const transformation1 = parseFloat(document.getElementById('transformation1').value);
-    const transformation2 = parseFloat(document.getElementById('transformation2').value);//definicion de variables y operacionales
+    const transformation1 = parseFloat(document.getElementById('transformation1').value);//declarar variables
+    const transformation2 = parseFloat(document.getElementById('transformation2').value);
 
-    const transformedP1 = transformation1 * p1 + transformation2 * p2;
+    const transformedP1 = transformation1 * p1 + transformation2 * p2;//funciones de transformacion
     const transformedP2 = transformation1 * p2 + transformation2 * p1;
+
     document.getElementById('result').textContent = `Resultado: (${transformedP1.toFixed(2)}, ${transformedP2.toFixed(2)})`;
-    document.getElementById('result').style.color = 'green';//color de fuente 
+    document.getElementById('result').style.color = 'green';//fuente
 }
+</script>
+</head>
+<body>
+<h1>TRANSFORMACIONES  CONJUNTAS</h1>
+<label for="p1">ingrese Coordenadas p1:<label>
+<input type="number" id="p1"><br>
+<label for="p2">ingrese Coordenadas p2:</label>
+<input type="number" id="p2"><br>
+<label for="transformation1"> transformación inicial:</label>
+<input type="number" id="transformation1"><br>
+<label for="transformation2"> transformación final:</label>
+<input type="number" id="transformation2"><br>
+<button onclick="applyTransformations()">procesar</button>
+<p id="result"></p>
+</body>
+</html>
+
