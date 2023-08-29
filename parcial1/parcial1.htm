@@ -6,31 +6,62 @@
 <title>Transformaciónes conjuntas</title>
 <script>
 function applyTransformations() {
-    const p1 = parseFloat(document.getElementById('p1').value);
-    const p2 = parseFloat(document.getElementById('p2').value);
+    const p1Input = document.getElementById('p1').value.split(',').map(parseFloat);
+    const p2Input = document.getElementById('p2').value.split(',').map(parseFloat);
 
-    const transformation1 = parseFloat(document.getElementById('transformation1').value);
-    const transformation2 = parseFloat(document.getElementById('transformation2').value);
+    const initialTransformationInput = document.getElementById('initialTransformation').value.split(',').map(parseFloat);
+    const finalTransformationInput = document.getElementById('finalTransformation').value.split(',').map(parseFloat);
 
-    const transformedP1 = transformation1 * p1 + transformation2 * p2;
-    const transformedP2 = transformation1 * p2 + transformation2 * p1;
+    const initialTransformX = initialTransformationInput[0];
+    const initialTransformY = initialTransformationInput[1];
+    const initialTransformZ = initialTransformationInput[2];
 
-    document.getElementById('result').textContent = `Resultado: (${transformedP1.toFixed(2)}, ${transformedP2.toFixed(2)})`;
-    document.getElementById('result').style.color = 'green';
+    const finalTransformX = finalTransformationInput[0];
+    const finalTransformY = finalTransformationInput[1];
+    const finalTransformZ = finalTransformationInput[2];
+
+    const transformedP1x = initialTransformX * p1Input[0] + initialTransformY * p1Input[1] + initialTransformZ * p1Input[2];
+    const transformedP1y = initialTransformX * p1Input[1] + initialTransformY * p1Input[2] + initialTransformZ * p1Input[0];
+    const transformedP1z = initialTransformX * p1Input[2] + initialTransformY * p1Input[0] + initialTransformZ * p1Input[1];
+
+    const transformedP2x = initialTransformX * p2Input[0] + initialTransformY * p2Input[1] + initialTransformZ * p2Input[2];
+    const transformedP2y = initialTransformX * p2Input[1] + initialTransformY * p2Input[2] + initialTransformZ * p2Input[0];
+    const transformedP2z = initialTransformX * p2Input[2] + initialTransformY * p2Input[0] + initialTransformZ * p2Input[1];
+
+    const finalTransformedP1x = finalTransformX * transformedP1x + finalTransformY * transformedP1y + finalTransformZ * transformedP1z;
+    const finalTransformedP1y = finalTransformX * transformedP1y + finalTransformY * transformedP1z + finalTransformZ * transformedP1x;
+    const finalTransformedP1z = finalTransformX * transformedP1z + finalTransformY * transformedP1x + finalTransformZ * transformedP1y;
+
+    const finalTransformedP2x = finalTransformX * transformedP2x + finalTransformY * transformedP2y + finalTransformZ * transformedP2z;
+    const finalTransformedP2y = finalTransformX * transformedP2y + finalTransformY * transformedP2z + finalTransformZ * transformedP2x;
+    const finalTransformedP2z = finalTransformX * transformedP2z + finalTransformY * transformedP2x + finalTransformZ * transformedP2y;
+
+    document.getElementById('result1').textContent = `Punto 1 transformado: (${finalTransformedP1x.toFixed(2)}, ${finalTransformedP1y.toFixed(2)}, ${finalTransformedP1z.toFixed(2)})`;
+    document.getElementById('result2').textContent = `Punto 2 transformado: (${finalTransformedP2x.toFixed(2)}, ${finalTransformedP2y.toFixed(2)}, ${finalTransformedP2z.toFixed(2)})`;
+    document.getElementById('result1').style.color = 'red';
+    document.getElementById('result2').style.color = 'green';
 }
 </script>
 </head>
 <body>
-<h1>Transformaciones conjuntas</h1>
-<label for="p1">Coordenada p1:</label>
-<input type="number" id="p1"><br>
-<label for="p2">Coordenada p2:</label>
-<input type="number" id="p2"><br>
-<label for="transformation1"> transformación inicial:</label>
-<input type="number" id="transformation1"><br>
-<label for="transformation2"> transformación final:</label>
-<input type="number" id="transformation2"><br>
+<h1>Transformaciónes conjuntas</h1>
+<label for="p1">p1</label>
+<input type="text" id="p1"><br>
+
+<label for="p2">p2</label>
+<input type="text" id="p2"><br>
+
+<h2>Transformación Inicial</h2>
+<label for="initialTransformation">Componentes:</label>
+<input type="text" id="initialTransformation"><br>
+
+<h2>Transformación Final</h2>
+<label for="finalTransformation">Componentes:</label>
+<input type="text" id="finalTransformation"><br>
+
 <button onclick="applyTransformations()">procesar</button>
-<p id="result"></p>
+<p id="result1"></p>
+<p id="result2"></p>
 </body>
 </html>
+
