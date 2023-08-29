@@ -3,61 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Transformaciónes  conjuntas</title>
+<title>Transformaciónes conjuntas</title>
 <script>
 function applyTransformations() {
-    const p1x = parseFloat(document.getElementById('p1x').value);
-    const p1y = parseFloat(document.getElementById('p1y').value);
-    const p1z = parseFloat(document.getElementById('p1z').value);
-
-    const p2x = parseFloat(document.getElementById('p2x').value);
-    const p2y = parseFloat(document.getElementById('p2y').value);//añadi contenido a  cada p porque  no permitia ingresar mas de dos valores
-    const p2z = parseFloat(document.getElementById('p2z').value);
+    const p1 = parseFloat(document.getElementById('p1').value);
+    const p2 = parseFloat(document.getElementById('p2').value);
 
     const transformation1 = parseFloat(document.getElementById('transformation1').value);
     const transformation2 = parseFloat(document.getElementById('transformation2').value);
 
-    const transformedP1x = transformation1 * p1x + transformation2 * p1y;
-    const transformedP1y = transformation1 * p1y + transformation2 * p1z;
-    const transformedP1z = transformation1 * p1z + transformation2 * p1x;// a la operacion le añadi mas valores
+    const transformedP1 = transformation1 * p1 + transformation2 * p2;
+    const transformedP2 = transformation1 * p2 + transformation2 * p1;
 
-    const transformedP2x = transformation1 * p2x + transformation2 * p2y;
-    const transformedP2y = transformation1 * p2y + transformation2 * p2z;
-    const transformedP2z = transformation1 * p2z + transformation2 * p2x;
-
-    document.getElementById('result1').textContent = `Punto 1 transformado: (${transformedP1x.toFixed(2)}, ${transformedP1y.toFixed(2)}, ${transformedP1z.toFixed(2)})`;
-    document.getElementById('result2').textContent = `Punto 2 transformado: (${transformedP2x.toFixed(2)}, ${transformedP2y.toFixed(2)}, ${transformedP2z.toFixed(2)})`;
-    document.getElementById('result1').style.color = 'green';
-    document.getElementById('result2').style.color = 'red';
+    document.getElementById('result').textContent = `Resultado: (${transformedP1.toFixed(2)}, ${transformedP2.toFixed(2)})`;
+    document.getElementById('result').style.color = 'green';
 }
 </script>
 </head>
 <body>
 <h1>Transformaciones conjuntas</h1>
-<h2>Punto 1</h2>
-<label for="p1x">Componente x:</label>
-<input type="number" id="p1x"><br>
-<label for="p1y">Componente y:</label>
-<input type="number" id="p1y"><br>
-<label for="p1z">Componente z:</label>
-<input type="number" id="p1z"><br>
-
-<h2>Punto 2</h2>
-<label for="p2x">Componente x:</label>
-<input type="number" id="p2x"><br>
-<label for="p2y">Componente y:</label>
-<input type="number" id="p2y"><br>
-<label for="p2z">Componente z:</label>
-<input type="number" id="p2z"><br>
-
-<label for="transformation1">transformación inicial:</label>
+<label for="p1">Coordenada p1:</label>
+<input type="number" id="p1"><br>
+<label for="p2">Coordenada p2:</label>
+<input type="number" id="p2"><br>
+<label for="transformation1"> transformación inicial:</label>
 <input type="number" id="transformation1"><br>
-<label for="transformation2">transformación final:</label>
+<label for="transformation2"> transformación final:</label>
 <input type="number" id="transformation2"><br>
 <button onclick="applyTransformations()">procesar</button>
-<p id="result1"></p>
-<p id="result2"></p>
+<p id="result"></p>
 </body>
 </html>
-
-
